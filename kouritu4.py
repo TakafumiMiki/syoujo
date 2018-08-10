@@ -1,6 +1,6 @@
 import pandas as pd
 
-path = r"C:\Users\karug\Desktop\syoujo\kouhousien.csv"
+path = r"C:\Users\miki\Desktop\syoujo\kouhousien.csv"
 df = pd.read_csv(path,index_col=0)
 
 #res4 = 全素材最大数

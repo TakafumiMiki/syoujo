@@ -1,6 +1,6 @@
 import pandas as pd
 
-path = r"C:\Users\karug\Desktop\syoujo\kouhousien.csv"
+path = r"C:\Users\miki\Desktop\syoujo\kouhousien.csv"
 df = pd.read_csv(path,index_col=0)
 
 #res3 = 全素材最高効率表
@@ -9,11 +9,13 @@ def allSys(num):
         zpm = round(df["zinryoku"] / df["time"],2),
         dpm = round(df["zanyaku"] / df["time"],2),
         hpm = round(df["haikyu"] / df["time"],2),
-        ppm = round(df["parts"] / df["time"],2)    
+        ppm = round(df["parts"] / df["time"],2),
+        apm = (df["zinryoku"] + df["zanyaku"] + df["haikyu"] + df["parts"]*3) /df["time"] 
     )
     #今は適当
-    res3 = res3.sort_values([num[0],num[1],num[2],num[3]], ascending = [False,False,False,False])
+    res3 = res3.sort_values(["apm",num[0],num[1],num[2],num[3]], ascending = [False,False,False,False,False])
     print(res3)
+    res3.to_csv("select.csv")
 
 def numchenge(getnum):
     for i in range(4):
